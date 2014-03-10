@@ -1063,7 +1063,8 @@ table {
   border-radius: 4px;
 }
 #header form#api_selector .input a#explore:hover {
-  background-color: #547f00;
+  /*background-color: #547f00;*/
+
 }
 #header form#api_selector .input input {
   font-size: 0.9em;
