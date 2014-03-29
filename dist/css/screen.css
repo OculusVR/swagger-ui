@@ -125,15 +125,14 @@ table {
 }
 .swagger-ui-wrap {
   line-height: 1;
-  font-family: Cabin, Arial, sans-serif;
+  font-family: "Droid Sans", sans-serif;
   max-width: 960px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 35px;
 }
 .swagger-ui-wrap b,
 .swagger-ui-wrap strong {
-  font-family: Cabin, Arial, sans-serif;
+  font-family: "Droid Sans", sans-serif;
   font-weight: bold;
 }
 .swagger-ui-wrap q,
@@ -328,7 +327,7 @@ table {
   width: 100%;
 }
 .swagger-ui-wrap .model-signature {
-  font-family: Cabin, Arial, sans-serif;
+  font-family: "Droid Sans", sans-serif;
   font-size: 1em;
   line-height: 1.5em;
 }
@@ -425,7 +424,7 @@ table {
   font-size: 1.5em;
   line-height: 1.3em;
   padding: 10px 0 10px 0;
-  font-family: Cabin, Arial, sans-serif;
+  font-family: "Droid Sans", sans-serif;
   font-weight: bold;
 }
 .swagger-ui-wrap .heading_with_menu {
@@ -477,7 +476,7 @@ table {
   font-family: "Anonymous Pro", "Menlo", "Consolas", "Bitstream Vera Sans Mono", "Courier New", monospace;
 }
 .swagger-ui-wrap form.formtastic fieldset.inputs ol li.text textarea {
-  font-family: Cabin, Arial, sans-serif;
+  font-family: "Droid Sans", sans-serif;
   height: 250px;
   padding: 4px;
   display: block;
@@ -555,7 +554,7 @@ table {
   margin: 20px 0 25px 0 !important;
 }
 .swagger-ui-wrap ul#resources {
-  font-family: Cabin, Arial, sans-serif;
+  font-family: "Droid Sans", sans-serif;
   font-size: 0.9em;
 }
 .swagger-ui-wrap ul#resources li.resource {
@@ -628,7 +627,7 @@ table {
   display: block;
   clear: none;
   float: left;
-  font-family: Cabin, Arial, sans-serif;
+  font-family: "Droid Sans", sans-serif;
   font-weight: bold;
 }
 .swagger-ui-wrap ul#resources li.resource div.heading h2 a {
@@ -989,7 +988,7 @@ table {
   padding: 10px 0;
   font-size: 0.8em;
   border-top: 1px solid #dddddd;
-  font-family: Cabin, Arial, sans-serif;
+  font-family: "Droid Sans", sans-serif;
   color: #999999;
   font-style: italic;
 }
@@ -1004,7 +1003,7 @@ table {
 }
 .swagger-ui-wrap .markdown ol,
 .swagger-ui-wrap .markdown ul {
-  font-family: Cabin, Arial, sans-serif;
+  font-family: "Droid Sans", sans-serif;
   margin: 5px 0 10px;
   padding: 0 0 0 18px;
   list-style-type: disc;
