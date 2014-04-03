@@ -29,6 +29,9 @@
       dom_id: "swagger-ui-container",
       supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
       onComplete: function(swaggerApi, swaggerUi){
+
+        $('#resources_container').addClass('shadow');
+
         log("Loaded SwaggerUI");
 
         if(typeof initOAuth == "function") {
