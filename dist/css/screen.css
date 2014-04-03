@@ -1100,6 +1100,19 @@ table {
 .api-popup-actions {
   padding-top: 10px;
 }
+body {
+  background: #f1f1f1;
+}
+.shadow {
+  -moz-box-shadow: 0 0 3px rgba(57, 113, 191, 0.3);
+  -webkit-box-shadow: 0 0 3px rgba(57, 113, 191, 0.3);
+  box-shadow: 0 0 3px rgba(57, 113, 191, 0.3);
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=#888888, Direction=135, Strength=10);
+}
+#resources_container {
+  background: #fff;
+  padding: 10px;
+}
 .access {
   float: right;
 }
