@@ -24,8 +24,9 @@
 
   <script type="text/javascript">
     $(function () {
+      $('#resources_container').addClass('shadow');
       window.swaggerUi = new SwaggerUi({
-      url: "/describe-api/v1",
+      //url: "/describe-api/v1",
       dom_id: "swagger-ui-container",
       supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
       onComplete: function(swaggerApi, swaggerUi){
@@ -36,7 +37,7 @@
 
         if(typeof initOAuth == "function") {
           initOAuth({
-            clientId: "splinter",
+            clientId: "client",
             realm: "splinter",
             appName: "splinter"
           });

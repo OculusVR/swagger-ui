@@ -1191,8 +1191,10 @@ body {
 }
 #header a#logo {
   text-decoration: none;
-  background: transparent url('http://www.oculusvr.com/wp-content/themes/oculus/img/oculus-vr-logo.png') no-repeat left center;
-  padding: 40px 0 20px 280px;
+  /*background: transparent url('http://www.oculusvr.com/wp-content/themes/oculus/img/oculus-vr-logo.png') no-repeat left center;*/
+
+  /*padding: 40px 0 20px 280px;*/
+
   font-family: Cabin, Arial, sans-serif;
   font-size: 13px;
   font-weight: 400;
