@@ -23,22 +23,17 @@
   <script src='lib/swagger-oauth.js' type='text/javascript'></script>
 
   <script type="text/javascript">
+    var getUrlParameter = function(sParam) {
+      var sPageURL = window.location.search.substring(1);
+      var sURLVariables = sPageURL.split('&');
 
-
-      var getUrlParameter = function(sParam) {
-          var sPageURL = window.location.search.substring(1);
-          var sURLVariables = sPageURL.split('&');
-
-          for (var i = 0; i < sURLVariables.length; i++) {
-              var sParameterName = sURLVariables[i].split('=');
-              if (sParameterName[0] == sParam) {
-                  return sParameterName[1];
-              }
-          }
+      for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+          return sParameterName[1];
+        }
       }
-
-      console.log(getUrlParameter('baseUrl'));
-
+    }
 
     $(function () {
       $('#resources_container').addClass('shadow');
