@@ -57,7 +57,7 @@
       $('#resources_container').addClass('shadow');
 
       window.swaggerUi = new SwaggerUi({
-      url: baseUrl,
+      url: decodeURIComponent(baseUrl),
       dom_id: "swagger-ui-container",
       supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
       onComplete: function(swaggerApi, swaggerUi){

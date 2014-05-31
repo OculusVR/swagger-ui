@@ -380,6 +380,9 @@ table {
 .swagger-ui-wrap .model-signature .propOptKey {
   font-style: italic;
 }
+.swagger-ui-wrap .model-signature .propImmutableKey {
+  font-weight: bold;
+}
 .swagger-ui-wrap .model-signature .description .strong {
   font-weight: bold;
   color: #000;
