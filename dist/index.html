@@ -7,6 +7,7 @@
   <link href='css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
   <script type="text/javascript" src="lib/shred.bundle.js"></script>
   <script src='lib/jquery-1.8.0.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.cookie.min.js' type='text/javascript'></script>
   <script src='lib/jquery.slideto.min.js' type='text/javascript'></script>
   <script src='lib/jquery.wiggle.min.js' type='text/javascript'></script>
   <script src='lib/jquery.ba-bbq.min.js' type='text/javascript'></script>
@@ -23,9 +24,40 @@
   <script src='lib/swagger-oauth.js' type='text/javascript'></script>
 
   <script type="text/javascript">
+    var getUrlParameter = function(sParam) {
+      var sPageURL = window.location.search.substring(1);
+      var sURLVariables = sPageURL.split('&');
+
+      for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+          return sParameterName[1];
+        }
+      }
+    }
+
     $(function () {
+      var baseUrl = getUrlParameter('baseUrl') ? getUrlParameter('baseUrl') : undefined;
+
+      // If query param is present, update cookie
+      if(baseUrl) {
+        $.cookie('owp_swagger_baseUrl', baseUrl, { expires: 365, path: '/' });
+      }
+      // Otherwise, get value from the cookie
+      else {
+        baseUrl =  $.cookie('owp_swagger_baseUrl');
+      }
+
+      // Update URL value in the cookie on click
+      $('#explore').click(function(){
+        var baseUrl = $('#input_baseUrl').val();
+        $.cookie('owp_swagger_baseUrl', baseUrl, { expires: 365, path: '/' });
+      });
+
+      $('#resources_container').addClass('shadow');
+
       window.swaggerUi = new SwaggerUi({
-      url: "/describe-api/v1",
+      url: decodeURIComponent(baseUrl),
       dom_id: "swagger-ui-container",
       supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
       onComplete: function(swaggerApi, swaggerUi){
@@ -36,7 +68,7 @@
 
         if(typeof initOAuth == "function") {
           initOAuth({
-            clientId: "splinter",
+            clientId: "client",
             realm: "splinter",
             appName: "splinter"
           });
@@ -57,7 +89,7 @@
       log("key: " + key);
       if(key && key.trim() != "") {
         log("added key " + key);
-        window.authorizations.add("key", new ApiKeyAuthorization("api_key", key, "query"));
+        window.authorizations.add("key", new ApiKeyAuthorization("Authorization", 'Bearer ' + key.replace('/Bearer /i', ''), "header"));
       }
     })
     window.swaggerUi.load();
@@ -72,7 +104,7 @@
 
     <form id='api_selector'>
       <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>
-      <!-- <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div> -->
+      <div class='input'><input placeholder="OAuth token" id="input_apiKey" name="apiKey" type="text"/></div>
       <div class='input'><a id="explore" href="#">Explore</a></div>
     </form>
   </div>
