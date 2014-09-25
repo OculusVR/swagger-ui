@@ -37,15 +37,15 @@
     }
 
     $(function () {
-      var baseUrl = getUrlParameter('baseUrl') ? getUrlParameter('baseUrl') : undefined;
+      var baseUrl = getUrlParameter('baseUrl') ? decodeURIComponent(getUrlParameter('baseUrl')) : undefined;
 
       // If query param is present, update cookie
-      if(baseUrl) {
+      if (baseUrl) {
         $.cookie('owp_swagger_baseUrl', baseUrl, { expires: 365, path: '/' });
       }
       // Otherwise, get value from the cookie
       else {
-        baseUrl =  $.cookie('owp_swagger_baseUrl');
+        baseUrl =  decodeURIComponent($.cookie('owp_swagger_baseUrl'));
       }
 
       // Update URL value in the cookie on click
@@ -56,8 +56,13 @@
 
       $('#resources_container').addClass('shadow');
 
+      if(!baseUrl.match(/^https?:\/\/api(-(stage|integ))?\.oculus(vr)?\.(com|dev)\/api-docs\/v1\/?$/i)) {
+          console.log('shit');
+          return;
+      }
+
       window.swaggerUi = new SwaggerUi({
-      url: decodeURIComponent(baseUrl),
+      url: baseUrl,
       dom_id: "swagger-ui-container",
       supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
       onComplete: function(swaggerApi, swaggerUi){
