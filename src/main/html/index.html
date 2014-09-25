@@ -24,7 +24,7 @@
   <script src='lib/swagger-oauth.js' type='text/javascript'></script>
 
   <script type="text/javascript">
-    var getUrlParameter = function(sParam) {
+    var getUrlParameter = function (sParam) {
       var sPageURL = window.location.search.substring(1);
       var sURLVariables = sPageURL.split('&');
 
@@ -34,30 +34,52 @@
           return sParameterName[1];
         }
       }
-    }
+    };
+
+    var checkUrl = function (url) {
+        return url.match(/^https?:\/\/api(-(stage|integ))?\.oculus(vr)?\.(com|dev)\/api-docs\/v1\/?$/i);
+    };
+
+    var captureUrlChange = function (e) {
+        var baseUrl = $('#input_baseUrl').val();
+
+        if(!checkUrl(baseUrl)) {
+            e.stopImmediatePropagation();
+            throw new Error('Invalid URL format.');
+        }
+
+        $.cookie('owp_swagger_baseUrl', baseUrl, { expires: 365, path: '/' });
+    };
 
     $(function () {
-      var baseUrl = getUrlParameter('baseUrl') ? getUrlParameter('baseUrl') : undefined;
+      var baseUrl = getUrlParameter('baseUrl') ? decodeURIComponent(getUrlParameter('baseUrl')) : undefined;
 
       // If query param is present, update cookie
-      if(baseUrl) {
+      if (baseUrl) {
         $.cookie('owp_swagger_baseUrl', baseUrl, { expires: 365, path: '/' });
       }
       // Otherwise, get value from the cookie
       else {
-        baseUrl =  $.cookie('owp_swagger_baseUrl');
+        baseUrl = decodeURIComponent($.cookie('owp_swagger_baseUrl'));
       }
 
       // Update URL value in the cookie on click
-      $('#explore').click(function(){
-        var baseUrl = $('#input_baseUrl').val();
-        $.cookie('owp_swagger_baseUrl', baseUrl, { expires: 365, path: '/' });
+      $('#explore').on('click', captureUrlChange);
+      $('#input_baseUrl').on('keyup', function (e) {
+        if (e.keyCode === 13) {
+          return captureUrlChange(e);
+        }
       });
 
       $('#resources_container').addClass('shadow');
 
+      if(!checkUrl(baseUrl)) {
+          console.log('shit');
+          return;
+      }
+
       window.swaggerUi = new SwaggerUi({
-      url: decodeURIComponent(baseUrl),
+      url: baseUrl,
       dom_id: "swagger-ui-container",
       supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
       onComplete: function(swaggerApi, swaggerUi){
