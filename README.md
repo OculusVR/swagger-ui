@@ -1,5 +1,12 @@
-# Swagger UI
+# Build Me
+docker build -t oculus/swagger .
 
+# Run Me
+docker run -d -p 8080:80 --name swagger oculus/swagger
+or
+docker run --rm -p 8080:80 oculus/swagger
+
+# Swagger UI
 
 Swagger UI is part of Swagger project.  The Swagger project allows you to produce, visualize and consume your OWN RESTful services.  No proxy or 3rd party services required.  Do it your own way.
 
