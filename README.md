@@ -1,9 +1,9 @@
 # Run Me
-```docker run -d -p 8080:80 --name=swagger oculus/swagger```
+```docker run -d -p 80:80 --name=swagger oculus/swagger```
 
 or
 
-```docker run --rm -p 8080:80 oculus/swagger```
+```docker run --rm -p 80:80 oculus/swagger```
 
 # Build Me
 (Automated, so shouldn't need this)
