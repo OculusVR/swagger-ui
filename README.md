@@ -1,10 +1,14 @@
-# Build Me
-docker build -t oculus/swagger .
-
 # Run Me
-docker run -d -p 8080:80 --name swagger oculus/swagger
+```docker run -d -p 8080:80 --name=swagger oculus/swagger```
+
 or
-docker run --rm -p 8080:80 oculus/swagger
+
+```docker run --rm -p 8080:80 oculus/swagger```
+
+# Build Me
+(Automated, so shouldn't need this)
+
+```docker build -t oculus/swagger .```
 
 # Swagger UI
 
