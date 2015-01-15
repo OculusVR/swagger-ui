@@ -10,6 +10,12 @@ or
 
 ```docker build -t oculus/swagger .```
 
+# Use Me
+
+Update your /etc/hosts file to point swagger.oculus.dev to your docker/boot2docker IP (usually 192.168.59.103)
+
+Do it
+
 # Swagger UI
 
 Swagger UI is part of Swagger project.  The Swagger project allows you to produce, visualize and consume your OWN RESTful services.  No proxy or 3rd party services required.  Do it your own way.
